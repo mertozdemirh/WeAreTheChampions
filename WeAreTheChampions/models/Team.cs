@@ -8,6 +8,13 @@ namespace WeAreTheChampions.models
 {
     public class Team
     {
+        public Team()
+        {
+            Players = new HashSet<Player>();
+            Colors = new HashSet<Color>();
+            Matches = new HashSet<Match>();
+
+        }
         public int Id { get; set; }
         public string TeamName { get; set; }
         public ICollection<Color> Colors { get; set; }

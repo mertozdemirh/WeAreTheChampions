@@ -35,15 +35,19 @@
                         Id = c.Int(nullable: false, identity: true),
                         MatchTime = c.DateTime(nullable: false),
                         Team1Id = c.Int(nullable: false),
-                        Team1 = c.Int(nullable: false),
                         Team2Id = c.Int(nullable: false),
                         Score1 = c.Int(nullable: false),
                         Score2 = c.Int(nullable: false),
                         Result = c.Int(),
+                        Team_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Teams", t => t.Team2Id, cascadeDelete: true)
-                .Index(t => t.Team2Id);
+                .ForeignKey("dbo.Teams", t => t.Team1Id)
+                .ForeignKey("dbo.Teams", t => t.Team2Id)
+                .ForeignKey("dbo.Teams", t => t.Team_Id)
+                .Index(t => t.Team1Id)
+                .Index(t => t.Team2Id)
+                .Index(t => t.Team_Id);
             
             CreateTable(
                 "dbo.Players",
@@ -75,13 +79,17 @@
         public override void Down()
         {
             DropForeignKey("dbo.Players", "TeamId", "dbo.Teams");
+            DropForeignKey("dbo.Matches", "Team_Id", "dbo.Teams");
             DropForeignKey("dbo.Matches", "Team2Id", "dbo.Teams");
+            DropForeignKey("dbo.Matches", "Team1Id", "dbo.Teams");
             DropForeignKey("dbo.TeamColors", "Color_Id", "dbo.Colors");
             DropForeignKey("dbo.TeamColors", "Team_Id", "dbo.Teams");
             DropIndex("dbo.TeamColors", new[] { "Color_Id" });
             DropIndex("dbo.TeamColors", new[] { "Team_Id" });
             DropIndex("dbo.Players", new[] { "TeamId" });
+            DropIndex("dbo.Matches", new[] { "Team_Id" });
             DropIndex("dbo.Matches", new[] { "Team2Id" });
+            DropIndex("dbo.Matches", new[] { "Team1Id" });
             DropTable("dbo.TeamColors");
             DropTable("dbo.Players");
             DropTable("dbo.Matches");

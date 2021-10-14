@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            
         }
 
         protected override void Seed(WeAreTheChampions.models.WeAreTheChampionsContext context)
