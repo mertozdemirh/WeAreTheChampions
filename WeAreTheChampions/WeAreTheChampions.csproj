@@ -62,14 +62,22 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110141543021_Initial.cs" />
+    <Compile Include="Migrations\202110141543021_Initial.designer.cs">
+      <DependentUpon>202110141543021_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\Color.cs" />
     <Compile Include="models\Match.cs" />
     <Compile Include="models\Player.cs" />
+    <Compile Include="models\Result.cs" />
     <Compile Include="models\Team.cs" />
-    <Compile Include="models\TeamColor.cs" />
     <Compile Include="models\WeAreTheChampionsContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Migrations\202110141543021_Initial.resx">
+      <DependentUpon>202110141543021_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

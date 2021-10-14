@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace WeAreTheChampions.models
 {
-    class WeAreTheChampionsContext:DbContext
+    public class WeAreTheChampionsContext:DbContext
     {
+        public WeAreTheChampionsContext():base("name=WeAreTheChampionsCon")
+        {
+
+        }
         public DbSet<Team> Teams { get; set; }
-        public DbSet<Color> Colors { get; set; }
-        public DbSet<TeamColor> TeamColors { get; set; }
+        public DbSet<Color> Colors { get; set; }        
         public DbSet<Player> Players { get; set; }
         public DbSet<Match> Matches { get; set; }
     }

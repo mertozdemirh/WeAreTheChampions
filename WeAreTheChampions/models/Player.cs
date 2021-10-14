@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeAreTheChampions.models
 {
-    class Player
+    public class Player
     {
         public int Id { get; set; }
         public int? TeamId { get; set; }
