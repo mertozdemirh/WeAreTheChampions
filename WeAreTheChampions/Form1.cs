@@ -21,6 +21,19 @@ namespace WeAreTheChampions
             lblRenk.Height = 64;
             cboRenk1.DataSource = db.Colors.ToList();
             cboRenk2.DataSource = db.Colors.ToList();
+            cboTakimlar.DataSource = db.Teams.ToList();
+            cboTakimFiltrele.DataSource = db.Teams.ToList();
+            
+        }
+
+        private void KisileriListele()
+        {
+            dgvOyuncular.Rows.Clear();
+
+            foreach (var item in db.Players)
+            {
+                dgvOyuncular.Rows.Add(item.PlayerName);
+            }
         }
 
         private void TakimOlustur()
@@ -34,6 +47,8 @@ namespace WeAreTheChampions
             team.TeamName = txtTakimEkle.Text;
             team.Colors.Add((models.Color)cboRenk1.SelectedItem);
             team.Colors.Add((models.Color)cboRenk2.SelectedItem);
+
+            //lblRenk1.BackColor = System.Drawing.Color.FromArgb(new models.Color() { Red, Blue, Green });
 
             db.Teams.Add(team);
             lstMevcutTakimlar.Items.Add(team.TeamName);
@@ -63,11 +78,60 @@ namespace WeAreTheChampions
             lblRenk.BackColor = System.Drawing.Color.FromArgb((byte)nudKirmizi.Value, (byte)nudYesil.Value, (byte)nudMavi.Value);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnTakimEkle_Click(object sender, EventArgs e)
         {
             TakimOlustur();
-            
+        }
 
+
+        private void btnOyuncuEkle_Click(object sender, EventArgs e)
+        {
+            if (cboTakimlar.SelectedIndex<0 || txtOyuncuAdi.Text=="")
+            {
+                MessageBox.Show("Lütfen tüm alanları doldurunuz");
+                return;
+            }
+            string oyuncuAdi = txtOyuncuAdi.Text.Trim();
+            var takim = cboTakimlar.SelectedIndex + 1;
+
+            db.Players.Add(new Player()
+            {
+                PlayerName = oyuncuAdi,
+                TeamId = takim
+            });
+            db.SaveChanges();
+            KisileriListele();
+        }
+
+        private void btnOyuncuSil_Click(object sender, EventArgs e)
+        {
+            string seciliSatir = dgvOyuncular.CurrentRow.Cells[0].Value.ToString();
+            var sil = db.Players.Where(x => x.PlayerName == seciliSatir).FirstOrDefault();
+            db.Players.Remove(sil);
+            db.SaveChanges();
+            KisileriListele();
+        }
+
+        private void cboTakimFiltrele_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvFiltre.Rows.Clear();
+            int id = 0;
+            string takim = "";
+            foreach (var item in db.Teams)
+            {
+                if (cboTakimFiltrele.Text == item.TeamName)
+                {
+                    id = item.Id;
+                    takim = item.TeamName;
+                }            
+            }
+            foreach (var item in db.Players)
+            { 
+                if (id == item.TeamId)
+                {
+                    dgvFiltre.Rows.Add(item.PlayerName);
+                }
+            }
         }
     }
 }

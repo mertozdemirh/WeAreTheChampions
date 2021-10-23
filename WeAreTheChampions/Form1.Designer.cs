@@ -49,6 +49,12 @@ namespace WeAreTheChampions
             this.nudKirmizi = new System.Windows.Forms.NumericUpDown();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lblRenk2 = new System.Windows.Forms.Label();
+            this.lblRenk1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboRenk2 = new System.Windows.Forms.ComboBox();
             this.cboRenk1 = new System.Windows.Forms.ComboBox();
             this.btnCikart = new System.Windows.Forms.Button();
             this.btnTakimEkle = new System.Windows.Forms.Button();
@@ -56,12 +62,18 @@ namespace WeAreTheChampions
             this.lstMevcutTakimlar = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTakimEkle = new System.Windows.Forms.TextBox();
-            this.cboRenk2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.txtOyuncuAdi = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cboTakimlar = new System.Windows.Forms.ComboBox();
+            this.dgvOyuncular = new System.Windows.Forms.DataGridView();
+            this.btnOyuncuEkle = new System.Windows.Forms.Button();
+            this.btnOyuncuSil = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cboTakimFiltrele = new System.Windows.Forms.ComboBox();
+            this.dgvFiltre = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKarsilasmalar)).BeginInit();
@@ -69,7 +81,10 @@ namespace WeAreTheChampions
             ((System.ComponentModel.ISupportInitialize)(this.nudMavi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYesil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKirmizi)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOyuncular)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFiltre)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -269,6 +284,16 @@ namespace WeAreTheChampions
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dgvFiltre);
+            this.tabPage3.Controls.Add(this.cboTakimFiltrele);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.btnOyuncuSil);
+            this.tabPage3.Controls.Add(this.btnOyuncuEkle);
+            this.tabPage3.Controls.Add(this.dgvOyuncular);
+            this.tabPage3.Controls.Add(this.cboTakimlar);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.txtOyuncuAdi);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -279,8 +304,8 @@ namespace WeAreTheChampions
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label12);
-            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.lblRenk2);
+            this.tabPage4.Controls.Add(this.lblRenk1);
             this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.label9);
             this.tabPage4.Controls.Add(this.label8);
@@ -299,6 +324,61 @@ namespace WeAreTheChampions
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Takımlar";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // lblRenk2
+            // 
+            this.lblRenk2.AutoSize = true;
+            this.lblRenk2.Location = new System.Drawing.Point(684, 76);
+            this.lblRenk2.Name = "lblRenk2";
+            this.lblRenk2.Size = new System.Drawing.Size(54, 17);
+            this.lblRenk2.TabIndex = 12;
+            this.lblRenk2.Text = "label12";
+            // 
+            // lblRenk1
+            // 
+            this.lblRenk1.AutoSize = true;
+            this.lblRenk1.Location = new System.Drawing.Point(596, 76);
+            this.lblRenk1.Name = "lblRenk1";
+            this.lblRenk1.Size = new System.Drawing.Size(54, 17);
+            this.lblRenk1.TabIndex = 11;
+            this.lblRenk1.Text = "label11";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(593, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 17);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Takım Renkleri";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(41, 156);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 17);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Renk2:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(41, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 17);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Renk1:";
+            // 
+            // cboRenk2
+            // 
+            this.cboRenk2.DisplayMember = "ColorName";
+            this.cboRenk2.FormattingEnabled = true;
+            this.cboRenk2.Location = new System.Drawing.Point(41, 182);
+            this.cboRenk2.Name = "cboRenk2";
+            this.cboRenk2.Size = new System.Drawing.Size(180, 24);
+            this.cboRenk2.TabIndex = 7;
+            this.cboRenk2.ValueMember = "Id";
             // 
             // cboRenk1
             // 
@@ -327,6 +407,7 @@ namespace WeAreTheChampions
             this.btnTakimEkle.TabIndex = 4;
             this.btnTakimEkle.Text = "Ekle";
             this.btnTakimEkle.UseVisualStyleBackColor = true;
+            this.btnTakimEkle.Click += new System.EventHandler(this.btnTakimEkle_Click);
             // 
             // label3
             // 
@@ -362,58 +443,128 @@ namespace WeAreTheChampions
             this.txtTakimEkle.Size = new System.Drawing.Size(180, 22);
             this.txtTakimEkle.TabIndex = 0;
             // 
-            // cboRenk2
+            // txtOyuncuAdi
             // 
-            this.cboRenk2.FormattingEnabled = true;
-            this.cboRenk2.Location = new System.Drawing.Point(41, 182);
-            this.cboRenk2.Name = "cboRenk2";
-            this.cboRenk2.Size = new System.Drawing.Size(180, 24);
-            this.cboRenk2.TabIndex = 7;
+            this.txtOyuncuAdi.Location = new System.Drawing.Point(60, 49);
+            this.txtOyuncuAdi.Name = "txtOyuncuAdi";
+            this.txtOyuncuAdi.Size = new System.Drawing.Size(190, 22);
+            this.txtOyuncuAdi.TabIndex = 0;
             // 
-            // label8
+            // label13
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 102);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 17);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Renk1:";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(60, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 17);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Oyuncu Adı:";
             // 
-            // label9
+            // label14
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(41, 156);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 17);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Renk2:";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(57, 91);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(74, 17);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Takım Adı:";
             // 
-            // label10
+            // cboTakimlar
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(593, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 17);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Takım Renkleri";
+            this.cboTakimlar.DisplayMember = "TeamName";
+            this.cboTakimlar.FormattingEnabled = true;
+            this.cboTakimlar.Location = new System.Drawing.Point(60, 111);
+            this.cboTakimlar.Name = "cboTakimlar";
+            this.cboTakimlar.Size = new System.Drawing.Size(187, 24);
+            this.cboTakimlar.TabIndex = 3;
+            this.cboTakimlar.ValueMember = "Id";
             // 
-            // label11
+            // dgvOyuncular
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(596, 76);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 17);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "label11";
+            this.dgvOyuncular.AllowUserToAddRows = false;
+            this.dgvOyuncular.AllowUserToDeleteRows = false;
+            this.dgvOyuncular.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOyuncular.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dgvOyuncular.Location = new System.Drawing.Point(399, 40);
+            this.dgvOyuncular.Name = "dgvOyuncular";
+            this.dgvOyuncular.ReadOnly = true;
+            this.dgvOyuncular.RowHeadersWidth = 51;
+            this.dgvOyuncular.RowTemplate.Height = 24;
+            this.dgvOyuncular.Size = new System.Drawing.Size(240, 150);
+            this.dgvOyuncular.TabIndex = 4;
             // 
-            // label12
+            // btnOyuncuEkle
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(684, 76);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 17);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "label12";
+            this.btnOyuncuEkle.Location = new System.Drawing.Point(56, 159);
+            this.btnOyuncuEkle.Name = "btnOyuncuEkle";
+            this.btnOyuncuEkle.Size = new System.Drawing.Size(107, 31);
+            this.btnOyuncuEkle.TabIndex = 5;
+            this.btnOyuncuEkle.Text = "EKLE";
+            this.btnOyuncuEkle.UseVisualStyleBackColor = true;
+            this.btnOyuncuEkle.Click += new System.EventHandler(this.btnOyuncuEkle_Click);
+            // 
+            // btnOyuncuSil
+            // 
+            this.btnOyuncuSil.Location = new System.Drawing.Point(169, 159);
+            this.btnOyuncuSil.Name = "btnOyuncuSil";
+            this.btnOyuncuSil.Size = new System.Drawing.Size(78, 30);
+            this.btnOyuncuSil.TabIndex = 6;
+            this.btnOyuncuSil.Text = "SİL";
+            this.btnOyuncuSil.UseVisualStyleBackColor = true;
+            this.btnOyuncuSil.Click += new System.EventHandler(this.btnOyuncuSil_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(63, 238);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(96, 17);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Takım Filtrele:";
+            // 
+            // cboTakimFiltrele
+            // 
+            this.cboTakimFiltrele.DisplayMember = "TeamName";
+            this.cboTakimFiltrele.FormattingEnabled = true;
+            this.cboTakimFiltrele.Location = new System.Drawing.Point(66, 277);
+            this.cboTakimFiltrele.Name = "cboTakimFiltrele";
+            this.cboTakimFiltrele.Size = new System.Drawing.Size(181, 24);
+            this.cboTakimFiltrele.TabIndex = 8;
+            this.cboTakimFiltrele.ValueMember = "Id";
+            this.cboTakimFiltrele.SelectedIndexChanged += new System.EventHandler(this.cboTakimFiltrele_SelectedIndexChanged);
+            // 
+            // dgvFiltre
+            // 
+            this.dgvFiltre.AllowUserToAddRows = false;
+            this.dgvFiltre.AllowUserToDeleteRows = false;
+            this.dgvFiltre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFiltre.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2});
+            this.dgvFiltre.Location = new System.Drawing.Point(399, 228);
+            this.dgvFiltre.Name = "dgvFiltre";
+            this.dgvFiltre.ReadOnly = true;
+            this.dgvFiltre.RowHeadersWidth = 51;
+            this.dgvFiltre.RowTemplate.Height = 24;
+            this.dgvFiltre.Size = new System.Drawing.Size(240, 150);
+            this.dgvFiltre.TabIndex = 9;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PlayerName";
+            this.Column1.HeaderText = "Oyuncu Adi";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "PlayerName";
+            this.Column2.HeaderText = "Takımlara Gore Filtrele";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 125;
             // 
             // Form1
             // 
@@ -432,8 +583,12 @@ namespace WeAreTheChampions
             ((System.ComponentModel.ISupportInitialize)(this.nudMavi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYesil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKirmizi)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOyuncular)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFiltre)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,9 +625,21 @@ namespace WeAreTheChampions
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboRenk2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblRenk2;
+        private System.Windows.Forms.Label lblRenk1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dgvOyuncular;
+        private System.Windows.Forms.ComboBox cboTakimlar;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtOyuncuAdi;
+        private System.Windows.Forms.Button btnOyuncuSil;
+        private System.Windows.Forms.Button btnOyuncuEkle;
+        private System.Windows.Forms.DataGridView dgvFiltre;
+        private System.Windows.Forms.ComboBox cboTakimFiltrele;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
 
