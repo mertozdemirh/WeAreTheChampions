@@ -19,10 +19,15 @@ namespace WeAreTheChampions
             InitializeComponent();
             lblRenk.Width = 64;
             lblRenk.Height = 64;
+            RenkleriListele();
+            TakimlariListele();            
+
+        }
+
+        private void RenkleriListele()
+        {
             cboRenk1.DataSource = db.Colors.ToList();
             cboRenk2.DataSource = db.Colors.ToList();
-            TakimlariListele();
-
         }
 
         private void TakimlariListele()
@@ -54,9 +59,11 @@ namespace WeAreTheChampions
             team.Colors.Add((models.Color)cboRenk2.SelectedItem);
 
   
-            var color = ((models.Color)cboRenk1.SelectedItem);
+            var color1 = (models.Color)cboRenk1.SelectedItem;
+            var color2 = (models.Color)cboRenk2.SelectedItem;
 
-            lblRenk1.BackColor = System.Drawing.Color.FromArgb(color.Red, color.Green, color.Blue);
+            lblRenk1.BackColor = System.Drawing.Color.FromArgb(color1.Red, color1.Green, color1.Blue);
+            lblRenk2.BackColor = System.Drawing.Color.FromArgb(color2.Red, color2.Green, color2.Blue);
 
             db.Teams.Add(team);
             lstMevcutTakimlar.Items.Add(team.TeamName);
@@ -78,6 +85,7 @@ namespace WeAreTheChampions
                 Blue = (byte)nudMavi.Value
             });
             db.SaveChanges();
+            RenkleriListele();
         }
 
         private void btnRengiOlustur_Click(object sender, EventArgs e)
@@ -89,7 +97,7 @@ namespace WeAreTheChampions
         private void btnTakimEkle_Click(object sender, EventArgs e)
         {
             TakimOlustur();
-            TakimlariListele();
+            TakimlariListele();            
         }
 
 

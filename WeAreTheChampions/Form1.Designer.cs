@@ -344,18 +344,18 @@ namespace WeAreTheChampions
             this.lblRenk2.AutoSize = true;
             this.lblRenk2.Location = new System.Drawing.Point(684, 76);
             this.lblRenk2.Name = "lblRenk2";
-            this.lblRenk2.Size = new System.Drawing.Size(54, 17);
+            this.lblRenk2.Size = new System.Drawing.Size(49, 17);
             this.lblRenk2.TabIndex = 12;
-            this.lblRenk2.Text = "label12";
+            this.lblRenk2.Text = "Renk2";
             // 
             // lblRenk1
             // 
             this.lblRenk1.AutoSize = true;
             this.lblRenk1.Location = new System.Drawing.Point(596, 76);
             this.lblRenk1.Name = "lblRenk1";
-            this.lblRenk1.Size = new System.Drawing.Size(54, 17);
+            this.lblRenk1.Size = new System.Drawing.Size(49, 17);
             this.lblRenk1.TabIndex = 11;
-            this.lblRenk1.Text = "label11";
+            this.lblRenk1.Text = "Renk1";
             // 
             // label10
             // 
