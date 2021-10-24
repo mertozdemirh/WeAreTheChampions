@@ -150,5 +150,7 @@ namespace WeAreTheChampions
                 }
             }
         }
+
+        //TODO: Takım çıkart, karşılaşma ekranını düzenle
     }
 }
