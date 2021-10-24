@@ -74,6 +74,11 @@ namespace WeAreTheChampions
             this.dgvFiltre = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKarsilasmalar)).BeginInit();
@@ -116,9 +121,18 @@ namespace WeAreTheChampions
             // 
             // dgvKarsilasmalar
             // 
+            this.dgvKarsilasmalar.AllowUserToAddRows = false;
+            this.dgvKarsilasmalar.AllowUserToDeleteRows = false;
             this.dgvKarsilasmalar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKarsilasmalar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
             this.dgvKarsilasmalar.Location = new System.Drawing.Point(17, 49);
             this.dgvKarsilasmalar.Name = "dgvKarsilasmalar";
+            this.dgvKarsilasmalar.ReadOnly = true;
             this.dgvKarsilasmalar.RowHeadersWidth = 51;
             this.dgvKarsilasmalar.RowTemplate.Height = 24;
             this.dgvKarsilasmalar.Size = new System.Drawing.Size(751, 295);
@@ -485,12 +499,12 @@ namespace WeAreTheChampions
             this.dgvOyuncular.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOyuncular.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            this.dgvOyuncular.Location = new System.Drawing.Point(399, 40);
+            this.dgvOyuncular.Location = new System.Drawing.Point(332, 6);
             this.dgvOyuncular.Name = "dgvOyuncular";
             this.dgvOyuncular.ReadOnly = true;
             this.dgvOyuncular.RowHeadersWidth = 51;
             this.dgvOyuncular.RowTemplate.Height = 24;
-            this.dgvOyuncular.Size = new System.Drawing.Size(240, 150);
+            this.dgvOyuncular.Size = new System.Drawing.Size(416, 193);
             this.dgvOyuncular.TabIndex = 4;
             // 
             // btnOyuncuEkle
@@ -540,12 +554,12 @@ namespace WeAreTheChampions
             this.dgvFiltre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFiltre.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2});
-            this.dgvFiltre.Location = new System.Drawing.Point(399, 228);
+            this.dgvFiltre.Location = new System.Drawing.Point(332, 205);
             this.dgvFiltre.Name = "dgvFiltre";
             this.dgvFiltre.ReadOnly = true;
             this.dgvFiltre.RowHeadersWidth = 51;
             this.dgvFiltre.RowTemplate.Height = 24;
-            this.dgvFiltre.Size = new System.Drawing.Size(240, 150);
+            this.dgvFiltre.Size = new System.Drawing.Size(416, 176);
             this.dgvFiltre.TabIndex = 9;
             // 
             // Column1
@@ -565,6 +579,51 @@ namespace WeAreTheChampions
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Team1Id";
+            this.Column3.HeaderText = "Takım1";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Team2Id";
+            this.Column4.HeaderText = "Takım2";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "TarihText";
+            this.Column5.HeaderText = "Tarih";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "SaatText";
+            this.Column6.HeaderText = "Saat";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "Result";
+            this.Column7.HeaderText = "Sonuc";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 125;
             // 
             // Form1
             // 
@@ -640,6 +699,11 @@ namespace WeAreTheChampions
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
     }
 }
 

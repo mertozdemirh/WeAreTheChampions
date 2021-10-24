@@ -18,6 +18,7 @@ namespace WeAreTheChampions.models
         public int Score2 { get; set; }
         public Result? Result { get; set; }
 
-
+        public string TarihText => MatchTime.ToString("yyyy:MM:dd");
+        public string SaatText => MatchTime.ToString("HH:mm");
     }
 }
