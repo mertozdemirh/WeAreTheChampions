@@ -20,5 +20,10 @@ namespace WeAreTheChampions.models
         public ICollection<Color> Colors { get; set; }
         public ICollection<Player> Players { get; set; }
         public ICollection<Match> Matches { get; set; }
+
+        public override string ToString()
+        {
+            return TeamName;
+        }
     }
 }

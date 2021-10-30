@@ -17,11 +17,28 @@ namespace WeAreTheChampions
         public Form1()
         {
             InitializeComponent();
+            dgvKarsilasmalar.AutoGenerateColumns = false;
             lblRenk.Width = 64;
             lblRenk.Height = 64;
             RenkleriListele();
-            TakimlariListele();            
+            TakimlariListele();
+            KarsilasmalariListele();
+            TakimlariGoruntule();
 
+
+
+        }
+
+        private void KarsilasmalariListele()
+        {
+            //dgvKarsilasmalar.Rows.Clear();
+
+            //foreach (var item in db.Matches)
+            //{
+            //    dgvKarsilasmalar.Rows.Add(item.Id, item.Team1, item.Team2, item.TarihText, item.Score1, item.Score2, item.Result);
+            //}
+
+            dgvKarsilasmalar.DataSource = db.Matches.ToList();
         }
 
         private void RenkleriListele()
@@ -65,10 +82,15 @@ namespace WeAreTheChampions
             lblRenk1.BackColor = System.Drawing.Color.FromArgb(color1.Red, color1.Green, color1.Blue);
             lblRenk2.BackColor = System.Drawing.Color.FromArgb(color2.Red, color2.Green, color2.Blue);
 
-            db.Teams.Add(team);
-            lstMevcutTakimlar.Items.Add(team.TeamName);
+            db.Teams.Add(team);            
             db.SaveChanges();
+            TakimlariGoruntule();
  
+        }
+
+        private void TakimlariGoruntule()
+        {
+            lstMevcutTakimlar.DataSource = db.Teams.ToList();
         }
 
         private void RengiOlustur()
@@ -149,6 +171,53 @@ namespace WeAreTheChampions
                     dgvFiltre.Rows.Add(item.PlayerName);
                 }
             }
+        }
+
+        private void btnCikart_Click(object sender, EventArgs e)
+        {
+            int id = (int)lstMevcutTakimlar.SelectedValue;
+            var sil = db.Teams.Where(x => x.Id == id).FirstOrDefault();
+            db.Teams.Remove(sil);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bu takımın çok derin bir gecmisi var silemezsiniz.");
+                return;
+            }
+            
+            TakimlariListele();
+            TakimlariGoruntule();
+        }
+
+        private void btnYeniKarsilasma_Click(object sender, EventArgs e)
+        {
+            var frmKarsilastirma = new YeniKarsilasmaEkle(db);
+            frmKarsilastirma.ShowDialog();
+
+            KarsilasmalariListele();
+
+
+        }
+
+        private void btnSecileniSil_Click(object sender, EventArgs e)
+        {
+            if (dgvKarsilasmalar.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            int id = ((Match) dgvKarsilasmalar.SelectedRows[0].DataBoundItem).Id;
+            var sil = db.Matches.Where(x => x.Id == id).FirstOrDefault();
+
+            if (dgvKarsilasmalar.Rows.Count>-1)
+            {
+                db.Matches.Remove(sil);
+                db.SaveChanges();
+            }
+            KarsilasmalariListele();
+            
         }
 
         //TODO: Takım çıkart, karşılaşma ekranını düzenle
