@@ -18,6 +18,7 @@ namespace WeAreTheChampions
         {
             InitializeComponent();
             dgvKarsilasmalar.AutoGenerateColumns = false;
+            dgvOyuncular.AutoGenerateColumns = false;
             lblRenk.Width = 64;
             lblRenk.Height = 64;
             RenkleriListele();
@@ -55,12 +56,8 @@ namespace WeAreTheChampions
 
         private void KisileriListele()
         {
-            dgvOyuncular.Rows.Clear();
-
-            foreach (var item in db.Players)
-            {
-                dgvOyuncular.Rows.Add(item.PlayerName);
-            }
+            
+            dgvOyuncular.DataSource = db.Players.ToList();
         }
 
         private void TakimOlustur()
@@ -131,7 +128,7 @@ namespace WeAreTheChampions
                 return;
             }
             string oyuncuAdi = txtOyuncuAdi.Text.Trim();
-            var takim = cboTakimlar.SelectedIndex + 1;
+            var takim = (int) cboTakimlar.SelectedValue;
 
             db.Players.Add(new Player()
             {
@@ -144,8 +141,8 @@ namespace WeAreTheChampions
 
         private void btnOyuncuSil_Click(object sender, EventArgs e)
         {
-            string seciliSatir = dgvOyuncular.CurrentRow.Cells[0].Value.ToString();
-            var sil = db.Players.Where(x => x.PlayerName == seciliSatir).FirstOrDefault();
+            int seciliSatir = ((Player)dgvOyuncular.SelectedRows[0].DataBoundItem).Id;
+            var sil = db.Players.Where(x => x.Id == seciliSatir).FirstOrDefault();
             db.Players.Remove(sil);
             db.SaveChanges();
             KisileriListele();
